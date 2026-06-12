@@ -1,37 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WanderLust</title>
-  </head>
-  <body>
-    <h3>Create a New Listing</h3>
-    <form method="POST" action="/listings">
-      <input name="listing[title]" placeholder="enter title" type="text" />
-      <br /><br />
-      <textarea
-        name="listing[description]"
-        placeholder="enter description"
-      ></textarea>
-      <br /><br />
-      <input
-        name="listing[image]"
-        placeholder="enter image URL/Link"
-        type="text"
-      />
-      <br /><br />
-      <input name="listing[price]" placeholder="enter price" type="number" />
-      <br /><br />
-      <input name="listing[country]" placeholder="enter country" type="text" />
-      <br /><br />
-      <input
-        name="listing[location]"
-        placeholder="enter location"
-        type="text"
-      />
-      <br /><br />
-      <button>Add</button>
+
+<div class="wl-form-page">
+  <h1 class="wl-form-page__title">Add a Listing</h1>
+  <p class="wl-form-page__sub">Share a beautiful place with the WanderLust community.</p>
+
+  <div class="wl-form-card">
+    <form action="/listings" method="POST">
+
+      <div class="wl-field">
+        <label for="title">Listing Title</label>
+        <input
+          type="text"
+          id="title"
+          name="listing[title]"
+          placeholder="e.g. Cozy Beach Cottage in Goa"
+          required
+        />
+      </div>
+
+      <div class="wl-field">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="listing[description]"
+          placeholder="Describe what makes this place special..."
+          required
+        ></textarea>
+      </div>
+
+      <div class="wl-form-row">
+        <div class="wl-field">
+          <label for="location">City / Area</label>
+          <input
+            type="text"
+            id="location"
+            name="listing[location]"
+            placeholder="e.g. Calangute, Goa"
+            required
+          />
+        </div>
+        <div class="wl-field">
+          <label for="country">Country</label>
+          <input
+            type="text"
+            id="country"
+            name="listing[country]"
+            placeholder="e.g. India"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="wl-field">
+        <label for="price">Price per Night (₹)</label>
+        <input
+          type="number"
+          id="price"
+          name="listing[price]"
+          placeholder="e.g. 1200"
+          min="0"
+          required
+        />
+      </div>
+
+      <div class="wl-form-footer">
+        <a href="/listings" class="btn-wl btn-wl--ghost">Cancel</a>
+        <button type="submit" class="btn-wl btn-wl--primary">Save Listing</button>
+      </div>
+
     </form>
-  </body>
-</html>
+  </div>
+</div>

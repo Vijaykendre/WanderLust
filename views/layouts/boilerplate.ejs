@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WanderLust</title>
+
+  <!-- Google Fonts (used by wanderlust.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- WanderLust stylesheet -->
+  <link rel="stylesheet" href="/css/wanderlust.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ───────────────────────────────────────── -->
+  <nav class="wl-navbar">
+    <a href="/listings" class="wl-navbar__brand">
+      <span class="wl-navbar__brand-word">Wander<span class="wl-navbar__brand-accent">Lust</span></span>
+      <span class="wl-navbar__tagline">Explore the world</span>
+    </a>
+
+    <ul class="wl-navbar__nav">
+      <li><a href="/listings" class="wl-navbar__link">Listings</a></li>
+      <li><a href="/listings/new" class="btn-wl btn-wl--primary" style="padding:9px 20px;">+ Add Listing</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Page Content ─────────────────────────────────── -->
+  <main>
+    <%- body %>
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────── -->
+  <footer class="wl-footer">
+    <div class="wl-footer__inner">
+      <div>
+        <div class="wl-footer__brand">Wander<span>Lust</span></div>
+        <p class="wl-footer__copy">Discover extraordinary places to stay around the world.</p>
+      </div>
+      <ul class="wl-footer__links">
+        <li><a href="/listings">All Listings</a></li>
+        <li><a href="/listings/new">Add a Listing</a></li>
+      </ul>
+    </div>
+    <div class="wl-footer__bottom">© 2025 WanderLust · Built with Express & EJS</div>
+  </footer>
+
+</body>
+</html>
