@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WanderLust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/wanderlust.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="wl-navbar">
+    <a href="/listings" class="wl-navbar__brand">
+      <div class="wl-navbar__logo">W</div>
+      <span class="wl-navbar__wordmark">Wander<span>Lust</span></span>
+    </a>
+    <ul class="wl-navbar__nav">
+      <li><a href="/listings" class="wl-navbar__link">Explore</a></li>
+      <li><a href="/listings/new" class="btn-wl btn-wl--primary" style="padding:8px 18px;font-size:.78rem;">+ New Listing</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <%- body %>
+  </main>
+
+  <!-- Footer -->
+  <footer class="wl-footer">
+    <div class="wl-footer__grid">
+      <div>
+        <div class="wl-footer__brand">Wander<span>Lust</span></div>
+        <p class="wl-footer__tagline">Discover hand-picked stays across the world — from hidden cottages to rooftop lofts.</p>
+      </div>
+      <div>
+        <p class="wl-footer__col-title">Navigate</p>
+        <ul class="wl-footer__links">
+          <li><a href="/listings">All Listings</a></li>
+          <li><a href="/listings/new">Add a Listing</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="wl-footer__col-title">Built With</p>
+        <ul class="wl-footer__links">
+          <li><a href="#">Node.js & Express</a></li>
+          <li><a href="#">MongoDB & Mongoose</a></li>
+          <li><a href="#">EJS Templates</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wl-footer__bottom">
+      <span class="wl-footer__copy">© 2025 WanderLust. All rights reserved.</span>
+      <span class="wl-footer__made">Made with ♥ for travellers</span>
+    </div>
+  </footer>
+
+</body>
+</html>
