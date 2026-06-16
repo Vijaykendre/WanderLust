@@ -1,19 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WanderLust</title>
-  </head>
-  <body>
-    <h3>All Listings</h3>
-    <form method="GET" action="/listings/new">
-      <button>Create New Listing</button>
-    </form>
-    <ul>
-      <% for(let listing of allListings) { %>
-      <li><a href="/listings/<%= listing._id %>"> <%= listing.title %> </a></li>
+
+
+<!-- Hero -->
+<section class="wl-hero">
+  <div class="wl-hero__inner">
+    <div class="wl-hero__pill">Discover the world</div>
+    <h1 class="wl-hero__title">Find your next<br><em>great adventure</em></h1>
+    <p class="wl-hero__sub">Hand-picked stays across the globe — beaches, mountains, cities and everything in between.</p>
+    <div class="wl-hero__cta">
+      <a href="#listings" class="btn-wl btn-wl--primary">Browse Listings</a>
+      <a href="/listings/new" class="btn-wl btn-wl--outline">+ Add Your Place</a>
+    </div>
+
+    <div class="wl-hero__stats">
+      <div>
+        <div class="wl-hero__stat-num"><%= allListings.length %>+</div>
+        <div class="wl-hero__stat-label">Listings</div>
+      </div>
+      <div>
+        <div class="wl-hero__stat-num">30+</div>
+        <div class="wl-hero__stat-label">Countries</div>
+      </div>
+      <div>
+        <div class="wl-hero__stat-num">∞</div>
+        <div class="wl-hero__stat-label">Memories</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Listings Grid -->
+<section class="wl-section" id="listings">
+  <div class="wl-section__header">
+    <div>
+      <p class="wl-section__eyebrow">Available Now</p>
+      <h2 class="wl-section__title">All Listings</h2>
+    </div>
+    <span class="wl-section__count"><%= allListings.length %> place<%= allListings.length !== 1 ? 's' : '' %></span>
+  </div>
+
+  <div class="wl-grid">
+    <% if (allListings.length === 0) { %>
+      <div class="wl-empty">
+        <div class="wl-empty__icon">🗺️</div>
+        <h3 class="wl-empty__title">No listings yet</h3>
+        <p class="wl-empty__sub">Be the first to share an amazing place.</p>
+        <a href="/listings/new" class="btn-wl btn-wl--primary">Add a Listing</a>
+      </div>
+    <% } else { %>
+      <% for (let listing of allListings) { %>
+        <div class="wl-card">
+
+          <div class="wl-card__img-wrap">
+            <img
+              class="wl-card__img"
+              src="<%= listing.image && listing.image.url ? listing.image.url : 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=800&q=60' %>"
+              alt="<%= listing.title %>"
+              loading="lazy"
+              onerror="this.src='https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=800&q=60'"
+            />
+            <span class="wl-card__country"><%= listing.country %></span>
+            <div class="wl-card__price-badge">
+              ₹<%= listing.price.toLocaleString('en-IN') %><span>/ night</span>
+            </div>
+          </div>
+
+          <div class="wl-card__body">
+            <p class="wl-card__location"><%= listing.location %></p>
+            <h3 class="wl-card__title">
+              <a href="/listings/<%= listing._id %>"><%= listing.title %></a>
+            </h3>
+            <p class="wl-card__desc"><%= listing.description %></p>
+            <div class="wl-card__footer">
+              <a href="/listings/<%= listing._id %>/edit" class="btn-wl btn-wl--ghost">Edit</a>
+              <a href="/listings/<%= listing._id %>" class="btn-wl btn-wl--light">View →</a>
+            </div>
+          </div>
+
+        </div>
       <% } %>
-    </ul>
-  </body>
-</html>
+    <% } %>
+  </div>
+</section>

@@ -1,24 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wanderlust</title>
-  </head>
-  <body>
-    <h3>Listing Details :</h3>
-    <ul>
-      <li><%= listing.title %></li>
-      <li><%= listing.description %></li>
-      <li>&#8377; <%= listing.price.toLocaleString("en-IN") %></li>
-      <li><%= listing.location %></li>
-      <li><%= listing.country %></li>
-    </ul>
-    <br />
-    <a href="/listings/<%= listing._id %>/edit">Edit this Listing</a>
-    <br /><br />
-    <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-      <button>Delete this listing</button>
-    </form>
-  </body>
-</html>
+
+<div class="wl-show-wrap">
+
+  <div class="wl-show__back">
+    <a href="/listings" class="btn-wl btn-wl--ghost">← Back to Listings</a>
+  </div>
+
+  <!-- Hero image with title overlay -->
+  <div class="wl-show__hero">
+    <img
+      class="wl-show__hero-img"
+      src="<%= listing.image && listing.image.url ? listing.image.url : 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80' %>"
+      alt="<%= listing.title %>"
+      onerror="this.src='https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80'"
+    />
+    <div class="wl-show__hero-text">
+      <p class="wl-show__hero-location">📍 <%= listing.location %>, <%= listing.country %></p>
+      <h1 class="wl-show__hero-title"><%= listing.title %></h1>
+    </div>
+  </div>
+
+  <!-- Content + Sidebar -->
+  <div class="wl-show__content">
+
+    <!-- Left: description + actions -->
+    <div>
+      <p class="wl-show__desc-label">About this place</p>
+      <p class="wl-show__desc"><%= listing.description %></p>
+
+      <div class="wl-show__actions">
+        <a href="/listings/<%= listing._id %>/edit" class="btn-wl btn-wl--light">✎ Edit Listing</a>
+        <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST" style="display:inline;">
+          <button type="submit" class="btn-wl btn-wl--danger">🗑 Delete</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right: sticky info card -->
+    <div class="wl-show__sidebar-card">
+      <div class="wl-show__price">₹<%= listing.price.toLocaleString('en-IN') %></div>
+      <p class="wl-show__price-label">per night</p>
+
+      <ul class="wl-show__meta-list">
+        <li class="wl-show__meta-row">
+          <span class="wl-show__meta-icon">📍</span>
+          <div>
+            <p class="wl-show__meta-key">Location</p>
+            <p class="wl-show__meta-val"><%= listing.location %></p>
+          </div>
+        </li>
+        <li class="wl-show__meta-row">
+          <span class="wl-show__meta-icon">🌍</span>
+          <div>
+            <p class="wl-show__meta-key">Country</p>
+            <p class="wl-show__meta-val"><%= listing.country %></p>
+          </div>
+        </li>
+        <li class="wl-show__meta-row">
+          <span class="wl-show__meta-icon">💰</span>
+          <div>
+            <p class="wl-show__meta-key">Price</p>
+            <p class="wl-show__meta-val">₹<%= listing.price.toLocaleString('en-IN') %> / night</p>
+          </div>
+        </li>
+      </ul>
+
+      <a href="/listings/<%= listing._id %>/edit" class="btn-wl btn-wl--primary" style="width:100%;justify-content:center;">Reserve This Place</a>
+    </div>
+
+  </div>
+</div>
